@@ -10,32 +10,34 @@ public class Encomenda {
 	private double valorServico;
 	private final double valorSinal = 0.5;
 	private String reciboCliente, reciboEmpresa;
+	private boolean statusFinalizado;
 	
 	public Encomenda(Cliente cliente, Placa placa) {
 		this.cliente = cliente;
 		this.placa = placa;
 		this.dataPedido = Calendar.getInstance();
-		this.dataEntrega = calculaPrazoEntrega();
+		calculaPrazoEntrega();
 		this.valorServico = calculaValorSevico();
+		this.setStatusFinalizado(false);
 	}
 	
-	private double custoMaterial() {
+	public double custoMaterial() {
 		double custo = 0;
 		custo = placa.area() * 200;
 		return custo ;		
 	}
 	
-	private int custoDesenho() {
+	public int custoDesenho() {
 		return placa.quantidadeLetras();
 	}
 	
-	private double calculaValorSevico() {
+	public double calculaValorSevico() {
 		return custoMaterial() * custoDesenho();
 	}
 
-	private Calendar calculaPrazoEntrega() {
-		
-		return null;
+	public void calculaPrazoEntrega() {		
+		dataEntrega = dataPedido;
+			dataEntrega.roll(dataPedido.DAY_OF_MONTH, true); // Faz entrega no proximo dia		
 	}
 	
 		
@@ -77,6 +79,14 @@ public class Encomenda {
 
 	public String getReciboEmpresa() {
 		return reciboEmpresa;
+	}
+
+	public boolean isStatusFinalizado() {
+		return statusFinalizado;
+	}
+
+	public void setStatusFinalizado(boolean statusFinalizado) {
+		this.statusFinalizado = statusFinalizado;
 	}
 	
 }
