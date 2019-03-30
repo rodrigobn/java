@@ -16,9 +16,11 @@ public class Encomenda {
 		this.cliente = cliente;
 		this.placa = placa;
 		this.dataPedido = Calendar.getInstance();
+		this.dataEntrega = Calendar.getInstance();
 		calculaPrazoEntrega();
 		this.valorServico = calculaValorSevico();
 		this.setStatusFinalizado(false);
+		
 	}
 	
 	public double custoMaterial() {
@@ -32,12 +34,21 @@ public class Encomenda {
 	}
 	
 	public double calculaValorSevico() {
-		return custoMaterial() * custoDesenho();
+		return custoMaterial() + custoDesenho();
 	}
 
-	public void calculaPrazoEntrega() {		
-		dataEntrega = dataPedido;
-			dataEntrega.roll(dataPedido.DAY_OF_MONTH, true); // Faz entrega no proximo dia		
+	private void calculaPrazoEntrega() {	
+		dataEntrega.roll(dataEntrega.DAY_OF_MONTH, true); // Faz entrega no proximo dia		
+	}
+	
+	public void geraReciboCliente() {
+		System.out.println("-------------------------");
+		System.out.println("Valor da encomenda: R$" + this.getValorServico() );
+		System.out.println("Data do pedido: " + this.getDataPedido().getTime());
+		System.out.println("Data da entrega: " + this.getDataEntrega().getTime());
+		System.out.println("Descrição da placa: " + this.getPlaca().toString());
+		System.out.println("-------------------------");
+				
 	}
 	
 		
