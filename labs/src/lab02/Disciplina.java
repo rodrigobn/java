@@ -24,18 +24,22 @@ public class Disciplina {
 	/**
 	* Constrói uma disciplina a partir de seu nome. Com quantidade de notas igual a 4 e pesos default 1.
 	*
-	* @param nome o nome da disciplina 
+	* @param nomeDisciplina o nome da disciplina 
 	*/
 	public Disciplina(String nomeDisciplina) {
 		this.nomeDisciplina = nomeDisciplina;
 		this.notas = new double[4];
+		this.pesosDasNotas = new int[getNotas().length];
+		for (int i = 0; i < notas.length; i++) {
+			this.pesosDasNotas[i] = 1;
+		}
 	}
 	
 	/**
 	* Constrói uma disciplina a partir de seu nome e com quantidade de notas. Pesos default 1.
 	*
-	* @param nome o nome da disciplina
-	* @param numero o numero de notas da disciplina
+	* @param nomeDisciplina o nome da disciplina
+	* @param numeroDeNotas o numero de notas da disciplina
 	*/
 	public Disciplina(String nomeDisciplina, int numeroDeNotas) {
 		this.nomeDisciplina = nomeDisciplina;
@@ -45,8 +49,9 @@ public class Disciplina {
 	/**
 	* Constrói uma disciplina a partir de seu nome, quantidade de notas e pesos para cada nota.
 	*
-	* @param nome o nome da disciplina
-	* @param numero o numero de notas da disciplina
+	* @param nomeDisciplina o nome da disciplina
+	* @param numeroDeNotas o numero de notas da disciplina
+	* @param pesosDasNotas o peso de cada notas da disciplina
 	*/
 	public Disciplina(String nomeDisciplina, int numeroDeNotas, int[] pesosDasNotas) {
 		this.nomeDisciplina = nomeDisciplina;
@@ -83,6 +88,7 @@ public class Disciplina {
 	/**
 	* Calcula a media normal de uma discipina, a soma dividido pela quantidade.
 	*
+	* @return Se foi aprovado ou não (True ou False)
 	*/
 	public boolean aprovadoMediaNormal() {
 		double total = 0;
@@ -100,6 +106,7 @@ public class Disciplina {
 	/**
 	* Calcula a media ponderada de uma discipina, o peso influencia.
 	*
+	* @return Se foi aprovado ou não (True ou False)
 	*/
 	public boolean aprovadoMediaPonderada() {
 		double totalNota = 0;
@@ -125,7 +132,8 @@ public class Disciplina {
 	
 	/**
 	* Retorna o nome da disciplina.
-	*
+	* 
+	* @return Retorna o nome da disciplina
 	*/
 	public String getNomeDisciplina() {
 		return nomeDisciplina;
@@ -133,7 +141,8 @@ public class Disciplina {
 	
 	/**
 	* Modifica o nome da disciplina.
-	*
+	* 
+	* @param nomeDisciplina o nome novo da disciplina
 	*/
 	public void setNomeDisciplina(String nomeDisciplina) {
 		this.nomeDisciplina = nomeDisciplina;
@@ -142,6 +151,7 @@ public class Disciplina {
 	/**
 	* Retorna a hora de estudo da disciplina.
 	*
+	* @return a hora de estudo da disciplina.
 	*/
 	public int getHoras() {
 		return horas;
@@ -149,7 +159,8 @@ public class Disciplina {
 	
 	/**
 	* Modifica a hora de estudo da disciplina.
-	*
+	* 
+	* @param horas a nova hora de estudo da disciplina.
 	*/
 	public void setHoras(int horas) {
 		this.horas = horas;
@@ -158,6 +169,7 @@ public class Disciplina {
 	/**
 	* Retorna as notas da disciplina.
 	*
+	* @return Retorna as notas da disciplina.
 	*/
 	public double[] getNotas() {
 		return notas;
@@ -166,6 +178,8 @@ public class Disciplina {
 	/**
 	* Modifica as notas da disciplina.
 	*
+	* @param numeroNota qual das notas sera alterada
+	* @param valorNota o valor da nota que sera alterada
 	*/
 	public void setNotas(int numeroNota, double valorNota) {
 		this.notas[numeroNota] = valorNota;
@@ -174,6 +188,7 @@ public class Disciplina {
 	/**
 	* Representação em String da classe Disciplina.java.
 	*
+	* @return Representação em String de uma disciplina.
 	*/
 	@Override
 	public String toString() {
@@ -183,6 +198,7 @@ public class Disciplina {
 	/**
 	* Retorna os pesos de cada nota da disciplina.
 	*
+	* @return Retorna os pesos de cada nota da disciplina.
 	*/
 	public int[] getPesosDasNotas() {
 		return pesosDasNotas;
@@ -191,6 +207,7 @@ public class Disciplina {
 	/**
 	* Modifica os pesos de cada nota da disciplina.
 	*
+	* @param pesosDasNotas a lista com os novos valores de peso para cada nota
 	*/
 	public void setPesosDasNotas(int[] pesosDasNotas) {
 		this.pesosDasNotas = pesosDasNotas;
