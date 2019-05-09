@@ -1,2 +1,2 @@
 # java
-	Labs, Exercicios e projetos em JAVA
+	Labs e exercicios em JAVA
