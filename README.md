@@ -1,2 +1,2 @@
 # java
-	Labs, Exercicios e projetos em JAVA da cadeira de programação 2 da UFCG
+	Labs, Exercicios e projetos em JAVA
